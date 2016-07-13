@@ -49,12 +49,46 @@ public class Main {
         return suits.size() == 1;
     }
 
+    static boolean isSameRank(HashSet<Card> hand){
+        HashSet<Card.Rank> ranks = hand.stream()
+                .map (card -> card.rank)
+                .collect(Collectors.toCollection(HashSet<Card.Rank>::new));
+        return ranks.size() == 1;
+    }
+
+
+
     public static void main(String[] args) {
         HashSet<Card> deck = createDeck();
         HashSet<HashSet<Card>> hands = createHands(deck);
+
         HashSet<HashSet<Card>> flushes = hands.stream()
                 .filter(Main::isFlush)
                 .collect(Collectors.toCollection(HashSet<HashSet<Card>>::new));
+
+        HashSet<HashSet<Card>>straight = hands.stream()
+                .filter(Main::)
+                .collect(Collectors.toCollection(HashSet<HashSet<Card>>::new));
+
+        HashSet<HashSet<Card>>straightFlush = hands.stream()
+                .filter(Main::)
+                .collect(Collectors.toCollection(HashSet<HashSet<Card>>::new));
+
+        HashSet<HashSet<Card>>fourOfAKind = hands.stream()
+                .filter(Main::isSameRank)
+                .collect(Collectors.toCollection(HashSet<HashSet<Card>>::new));
+
+        HashSet<HashSet<Card>>threeOfAKind = hands.stream()
+                .filter(Main::)
+                .collect(Collectors.toCollection(HashSet<HashSet<Card>>::new));
+
+        HashSet<HashSet<Card>>twoPairs = hands.stream()
+                .filter(Main::)
+                .collect(Collectors.toCollection(HashSet<HashSet<Card>>::new));
+
+
+
+
         System.out.println(flushes.size());
     }
 }
